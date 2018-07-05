@@ -1,0 +1,45 @@
+{
+  "name": "shoppingsite",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeMinhNhat/ShoppingSite.git"
+  },
+  "author": "Dao Minh Nhat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeMinhNhat/ShoppingSite/issues"
+  },
+  "homepage": "https://github.com/DeMinhNhat/ShoppingSite#readme",
+  "dependencies": {
+    "bcryptjs": "*",
+    "crypto-js": "*",
+    "dateformat": "*",
+    "moment": "*",
+    "wnumb": "*",
+    "pg-format": "*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "cookie-parser": "^1.4.1",
+    "express": "*",
+    "express-handlebars": "*",
+    "express-handlebars-sections": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "mongodb": "*",
+    "mysql": "*",
+    "multer": "*",
+    "mongoose": "*",
+    "path": "*",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*"
+  }
+}

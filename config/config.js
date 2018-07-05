@@ -1,0 +1,4 @@
+module.exports = {
+	PRODUCTS_PER_PAGE: 6,
+	PRODUCTS_TO_EXPOSE: 10
+}
