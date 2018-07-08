@@ -1,22 +1,13 @@
 var express = require('express');
-var orderRepo = require('../repos/orderRepo');
-var cartRepo = require('../repos/cartRepo');
 
 var router = express.Router();
 
 router.get('/', (req, res) => {
+	res.render('order/index');
+});
 
-	// var p1 = orderRepo.loadAll();
-	// var p2 = orderRepo.loadAllByUserID(req.session.curUser.f_ID);
-
-	// Promise.all([p1, p2]).then(([adRows, cusRows]) => {
-	// 	var vm = {
-	// 		orders: adRows,
-	// 		cusOrders: cusRows
-	// 	};
-	// 	res.render('order/index', vm);
-		res.render('order/index');
-	// });
+router.get('/detail', (req, res) => {
+	res.render('order/detail');
 });
 
 module.exports = router;
