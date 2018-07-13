@@ -1,1 +1,41 @@
 /** Your theme modifications here **/
+
+/*this for default*/
+.product-show h1,
+.product-show h2,
+.product-show h3,
+.product-show h4,
+.product-show h5 {
+  text-transform: uppercase;
+  font-size: 27px;
+  color: #4fbfa8;
+  font-weight: 100;
+  text-align: center;
+}
+.product-show .product-slider {
+  margin-bottom: 20px;
+}
+.product-show .product-slider:before,
+.product-show .product-slider:after {
+  content: " ";
+  display: table;
+}
+.product-show .product-slider:after {
+  clear: both;
+}
+.product-show .product-slider .item {
+  margin: 0 5px;
+  padding: 0;
+  visibility: hidden;
+}
+.product-show .product-slider .owl-controls {
+  position: relative;
+  top: -30px;
+}
+.product-show .product-slider .owl-controls .owl-buttons {
+  display: none;
+}
+.product-show .product-slider .owl-controls .owl-page.active span,
+.product-show .product-slider .owl-controls.clickable .owl-page:hover span {
+  background: #4fbfa8;
+}

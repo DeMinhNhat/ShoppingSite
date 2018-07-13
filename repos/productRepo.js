@@ -1,5 +1,4 @@
 var db = require('./database');
-var config = require('../config/config');
 
 exports.loadAll = () => {
 	var sql = 'select * from products';
@@ -24,9 +23,9 @@ exports.loadTopSold = (amount, offset) => {
 	return db.load(sql);
 }
 
-exports.loadPage = offset => {
+exports.loadProducts = (amount, offset) => {
 	var sql = `select * from products 
-	limit ${config.PRODUCTS_PER_PAGE} offset ${offset}`;
+	limit ${amount} offset ${offset}`;
 	return db.load(sql);
 }
 

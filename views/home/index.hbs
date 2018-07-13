@@ -1,321 +1,207 @@
+{{#section 'title'}}SSG Shoppin{{/section}}
+
 <div id="content">
 
 	<div class="container">
 		<div class="col-md-12">
 			<div id="main-slider">
 				<div class="item">
-					<img src="http://via.placeholder.com/1200x600" alt="" class="img-responsive">
+					<img src="/imgs/icons/main-slider1.jpg" alt="" class="img-responsive">
 				</div>
 				<div class="item">
-					<img class="img-responsive" src="http://via.placeholder.com/1200x600" alt="">
+					<img class="img-responsive" src="/imgs/icons/main-slider2.jpg" alt="">
 				</div>
 				<div class="item">
-					<img class="img-responsive" src="http://via.placeholder.com/1200x600" alt="">
+					<img class="img-responsive" src="/imgs/icons/main-slider3.jpg" alt="">
 				</div>
 				<div class="item">
-					<img class="img-responsive" src="http://via.placeholder.com/1200x600" alt="">
+					<img class="img-responsive" src="/imgs/icons/main-slider4.jpg" alt="">
 				</div>
 			</div>
 			<!-- /#main-slider -->
 		</div>
 	</div>
 
-	<!-- *** HOT PRODUCT SLIDESHOW *** -->
-	<div id="hot">
+	<!-- *** NEWEST PRODUCT SLIDESHOW *** -->
+	<div class="product-show">
 
 		<div class="box">
 			<div class="container">
 				<div class="col-md-12">
-					<h2>Hot this week</h2>
+					<h2>Hot this month</h2>
 				</div>
 			</div>
 		</div>
 
 		<div class="container">
 			<div class="product-slider">
+
+				{{#each newest}}
 				<div class="item">
 					<div class="product">
 						<div class="flip-container">
 							<div class="flipper">
 								<div class="front">
-									<a href="detail.html">
-										<img src="/assets/img/product1.jpg" alt="" class="img-responsive">
+									<a href="/product/detail">
+										<img src="/imgs/products/{{ProID}}/1.jpg" alt="" class="img-responsive">
 									</a>
 								</div>
 								<div class="back">
-									<a href="detail.html">
-										<img src="/assets/img/product1_2.jpg" alt="" class="img-responsive">
+									<a href="/product/detail">
+										<img src="/imgs/products/{{ProID}}/2.jpg" alt="" class="img-responsive">
 									</a>
 								</div>
 							</div>
 						</div>
-						<a href="detail.html" class="invisible">
-							<img src="/assets/img/product1.jpg" alt="" class="img-responsive">
+						<a href="/product/detail" class="invisible">
+							<img src="/imgs/products/{{ProID}}/2.jpg" alt="" class="img-responsive">
 						</a>
 						<div class="text">
-							<h3><a href="detail.html">Fur coat with very but very very long name</a></h3>
-							<p class="price">$143.00</p>
+							<h3><a href="/product/detail">{{ProName}}</a></h3>
+							{{#if SaleOff}}
+							<p class="price"><del>{{number_format Price}}</del> {{number_format Price}}</p>
+							{{else}}
+							<p class="price">{{number_format Price}}</p>
+							{{/if}}
+
+							<p class="text-center buttons">
+								<a href="" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ :)</a> 
+							</p>
 						</div>
 						<!-- /.text -->
-					</div>
-					<!-- /.product -->
-				</div>
-
-				<div class="item">
-					<div class="product">
-						<div class="flip-container">
-							<div class="flipper">
-								<div class="front">
-									<a href="detail.html">
-										<img src="img/product2.jpg" alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="back">
-									<a href="detail.html">
-										<img src="img/product2_2.jpg" alt="" class="img-responsive">
-									</a>
-								</div>
-							</div>
-						</div>
-						<a href="detail.html" class="invisible">
-							<img src="img/product2.jpg" alt="" class="img-responsive">
-						</a>
-						<div class="text">
-							<h3><a href="detail.html">White Blouse Armani</a></h3>
-							<p class="price"><del>$280</del> $143.00</p>
-						</div>
-						<!-- /.text -->
-
-						<div class="ribbon sale">
-							<div class="theribbon">SALE</div>
-							<div class="ribbon-background"></div>
-						</div>
-						<!-- /.ribbon -->
-
-						<div class="ribbon new">
-							<div class="theribbon">NEW</div>
-							<div class="ribbon-background"></div>
-						</div>
-						<!-- /.ribbon -->
-
-						<div class="ribbon gift">
-							<div class="theribbon">GIFT</div>
-							<div class="ribbon-background"></div>
-						</div>
-						<!-- /.ribbon -->
-					</div>
-					<!-- /.product -->
-				</div>
-
-				<div class="item">
-					<div class="product">
-						<div class="flip-container">
-							<div class="flipper">
-								<div class="front">
-									<a href="detail.html">
-										<img src="img/product3.jpg" alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="back">
-									<a href="detail.html">
-										<img src="img/product3_2.jpg" alt="" class="img-responsive">
-									</a>
-								</div>
-							</div>
-						</div>
-						<a href="detail.html" class="invisible">
-							<img src="img/product3.jpg" alt="" class="img-responsive">
-						</a>
-						<div class="text">
-							<h3><a href="detail.html">Black Blouse Versace</a></h3>
-							<p class="price">$143.00</p>
-						</div>
-						<!-- /.text -->
-					</div>
-					<!-- /.product -->
-				</div>
-
-				<div class="item">
-					<div class="product">
-						<div class="flip-container">
-							<div class="flipper">
-								<div class="front">
-									<a href="detail.html">
-										<img src="img/product3.jpg" alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="back">
-									<a href="detail.html">
-										<img src="img/product3_2.jpg" alt="" class="img-responsive">
-									</a>
-								</div>
-							</div>
-						</div>
-						<a href="detail.html" class="invisible">
-							<img src="img/product3.jpg" alt="" class="img-responsive">
-						</a>
-						<div class="text">
-							<h3><a href="detail.html">Black Blouse Versace</a></h3>
-							<p class="price">$143.00</p>
-						</div>
-						<!-- /.text -->
-					</div>
-					<!-- /.product -->
-				</div>
-
-				<div class="item">
-					<div class="product">
-						<div class="flip-container">
-							<div class="flipper">
-								<div class="front">
-									<a href="detail.html">
-										<img src="img/product2.jpg" alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="back">
-									<a href="detail.html">
-										<img src="img/product2_2.jpg" alt="" class="img-responsive">
-									</a>
-								</div>
-							</div>
-						</div>
-						<a href="detail.html" class="invisible">
-							<img src="img/product2.jpg" alt="" class="img-responsive">
-						</a>
-						<div class="text">
-							<h3><a href="detail.html">White Blouse Versace</a></h3>
-							<p class="price">$143.00</p>
-						</div>
-						<!-- /.text -->
-
-						<div class="ribbon new">
-							<div class="theribbon">NEW</div>
-							<div class="ribbon-background"></div>
-						</div>
-						<!-- /.ribbon -->
-					</div>
-					<!-- /.product -->
-				</div>
-
-				<div class="item">
-					<div class="product">
-						<div class="flip-container">
-							<div class="flipper">
-								<div class="front">
-									<a href="detail.html">
-										<img src="img/product1.jpg" alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="back">
-									<a href="detail.html">
-										<img src="img/product1_2.jpg" alt="" class="img-responsive">
-									</a>
-								</div>
-							</div>
-						</div>
-						<a href="detail.html" class="invisible">
-							<img src="img/product1.jpg" alt="" class="img-responsive">
-						</a>
-						<div class="text">
-							<h3><a href="detail.html">Fur coat</a></h3>
-							<p class="price">$143.00</p>
-						</div>
-						<!-- /.text -->
-
-						<div class="ribbon gift">
-							<div class="theribbon">GIFT</div>
-							<div class="ribbon-background"></div>
-						</div>
-						<!-- /.ribbon -->
 
 					</div>
 					<!-- /.product -->
 				</div>
-				<!-- /.col-md-4 -->
-
-				<div class="item">
-					<div class="product">
-						<div class="flip-container">
-							<div class="flipper">
-								<div class="front">
-									<a href="detail.html">
-										<img src="img/product2.jpg" alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="back">
-									<a href="detail.html">
-										<img src="img/product2_2.jpg" alt="" class="img-responsive">
-									</a>
-								</div>
-							</div>
-						</div>
-						<a href="detail.html" class="invisible">
-							<img src="img/product2.jpg" alt="" class="img-responsive">
-						</a>
-						<div class="text">
-							<h3><a href="detail.html">White Blouse Armani</a></h3>
-							<p class="price"><del>$280</del> $143.00</p>
-						</div>
-						<!-- /.text -->
-
-						<div class="ribbon sale">
-							<div class="theribbon">SALE</div>
-							<div class="ribbon-background"></div>
-						</div>
-						<!-- /.ribbon -->
-
-						<div class="ribbon new">
-							<div class="theribbon">NEW</div>
-							<div class="ribbon-background"></div>
-						</div>
-						<!-- /.ribbon -->
-
-						<div class="ribbon gift">
-							<div class="theribbon">GIFT</div>
-							<div class="ribbon-background"></div>
-						</div>
-						<!-- /.ribbon -->
-					</div>
-					<!-- /.product -->
-				</div>
-
-				<div class="item">
-					<div class="product">
-						<div class="flip-container">
-							<div class="flipper">
-								<div class="front">
-									<a href="detail.html">
-										<img src="img/product3.jpg" alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="back">
-									<a href="detail.html">
-										<img src="img/product3_2.jpg" alt="" class="img-responsive">
-									</a>
-								</div>
-							</div>
-						</div>
-						<a href="detail.html" class="invisible">
-							<img src="img/product3.jpg" alt="" class="img-responsive">
-						</a>
-						<div class="text">
-							<h3><a href="detail.html">Black Blouse Versace</a></h3>
-							<p class="price">$143.00</p>
-						</div>
-						<!-- /.text -->
-					</div>
-					<!-- /.product -->
-				</div>
+				{{/each}}
 
 			</div>
 			<!-- /.product-slider -->
 		</div>
 		<!-- /.container -->
-
 	</div>
-	<!-- /#hot -->
 
-	<!-- *** HOT END *** -->
+	<!-- *** NEWEST END *** -->
+
+	<!-- *** TOP-SOLD PRODUCT SLIDESHOW *** -->
+	<div class="product-show">
+
+		<div class="box">
+			<div class="container">
+				<div class="col-md-12">
+					<h2>Top sellers</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="product-slider">
+
+				{{#each top_sold}}
+				<div class="item">
+					<div class="product">
+						<div class="flip-container">
+							<div class="flipper">
+								<div class="front">
+									<a href="/product/detail">
+										<img src="/imgs/products/{{ProID}}/1.jpg" alt="" class="img-responsive">
+									</a>
+								</div>
+								<div class="back">
+									<a href="/product/detail">
+										<img src="/imgs/products/{{ProID}}/2.jpg" alt="" class="img-responsive">
+									</a>
+								</div>
+							</div>
+						</div>
+						<a href="/product/detail" class="invisible">
+							<img src="/imgs/products/{{ProID}}/2.jpg" alt="" class="img-responsive">
+						</a>
+						<div class="text">
+							<h3><a href="/product/detail">{{ProName}}</a></h3>
+							{{#if SaleOff}}
+							<p class="price"><del>{{number_format Price}}</del> {{number_format Price}}</p>
+							{{else}}
+							<p class="price">{{number_format Price}}</p>
+							{{/if}}
+							<p class="text-center buttons">
+								<a href="" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ :)</a> 
+							</p>
+						</div>
+						<!-- /.text -->
+
+					</div>
+					<!-- /.product -->
+				</div>
+				{{/each}}
+
+			</div>
+			<!-- /.product-slider -->
+		</div>
+		<!-- /.container -->
+	</div>
+
+	<!-- *** TOP-SOLD END *** -->
+
+	<!-- *** TOP-VIEW PRODUCT SLIDESHOW *** -->
+	<div class="product-show">
+
+		<div class="box">
+			<div class="container">
+				<div class="col-md-12">
+					<h2>Most general</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="product-slider">
+
+				{{#each top_viewed}}
+				<div class="item">
+					<div class="product">
+						<div class="flip-container">
+							<div class="flipper">
+								<div class="front">
+									<a href="/product/detail">
+										<img src="/imgs/products/{{ProID}}/1.jpg" alt="" class="img-responsive">
+									</a>
+								</div>
+								<div class="back">
+									<a href="/product/detail">
+										<img src="/imgs/products/{{ProID}}/2.jpg" alt="" class="img-responsive">
+									</a>
+								</div>
+							</div>
+						</div>
+						<a href="/product/detail" class="invisible">
+							<img src="/imgs/products/{{ProID}}/2.jpg" alt="" class="img-responsive">
+						</a>
+						<div class="text">
+							<h3><a href="/product/detail">{{ProName}}</a></h3>
+							{{#if SaleOff}}
+							<p class="price"><del>{{number_format Price}}</del> {{number_format Price}}</p>
+							{{else}}
+							<p class="price">{{number_format Price}}</p>
+							{{/if}}
+							<p class="text-center buttons">
+								<a href="" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ :)</a>  
+							</p>
+						</div>
+						<!-- /.text -->
+
+					</div>
+					<!-- /.product -->
+				</div>
+				{{/each}}
+
+			</div>
+			<!-- /.product-slider -->
+		</div>
+		<!-- /.container -->
+	</div>
+
+	<!-- *** TOP-VIEW END *** -->
 
 </div>
 <!-- /#content -->
