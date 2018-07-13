@@ -1,7 +1,7 @@
 var db = require('./database');
 
 exports.loadAll = () => {
-	var sql = 'select * from products';
+	var sql = `select * from products`;
 	return db.load(sql);
 }
 
