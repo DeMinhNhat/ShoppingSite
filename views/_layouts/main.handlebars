@@ -43,11 +43,18 @@
             </div>
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
-                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+                    {{#if layoutVM.isLogged}}
+                    <li><a href="#">{{layoutVM.curUser.f_Username}}</a>
                     </li>
-                    <li><a href="register.html">Register</a>
+                    <li><a href="#">Đăng xuất</a>
                     </li>
-                    <li><a href="contact.html">Contact</a>
+                    {{else}}
+                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Đăng nhập</a>
+                    </li>
+                    <li><a href="/user/register">Đăng kí</a>
+                    </li>
+                    {{/if}}
+                    <li><a href="/us/contact">Liên hệ</a>
                     </li>
                 </ul>
             </div>
@@ -58,10 +65,10 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="Login">Customer login</h4>
+                        <h4 class="modal-title" id="Login">Đăng nhập</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="customer-orders.html" method="post">
+                        <form action="/user/" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="email-modal" placeholder="email">
                             </div>
@@ -70,13 +77,13 @@
                             </div>
 
                             <p class="text-center">
-                                <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
+                                <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Đăng nhập</button>
                             </p>
 
                         </form>
 
-                        <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+                        <p class="text-center text-muted">Chưa có tài khoản?</p>
+                        <p class="text-center text-muted"><a href="/user/register"><strong>Đăng kí ngay</strong></a>! Chỉ với 1 phút là bạn đã có thể truy cập vào hệ thống của chúng tôi và thoải mãi mua sắm :)</p>
 
                     </div>
                 </div>
@@ -91,7 +98,7 @@
         <div class="container">
             <div class="navbar-header">
 
-                <a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
+                <a class="navbar-brand home" href="/" data-animate-hover="bounce">
                     <img src="" alt="logo" class="hidden-xs">
                     <img src="img/logo-small.png" alt="logo" class="visible-xs"><span class="sr-only">Go to homepage</span>
                 </a>
@@ -104,8 +111,8 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                    <a class="btn btn-default navbar-toggle" href="basket.html">
-                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">3 items in cart</span>
+                    <a class="btn btn-default navbar-toggle" href="#">
+                        <i class="fa fa-shopping-cart"></i><span class="hidden-xs">Giỏ hàng <span class="cart-count">0</span></span>
                     </a>
                 </div>
             </div>
@@ -114,7 +121,7 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="/">Home</a>
+                    <li class="active"><a href="/">Trang chủ</a>
                     </li>
 
                     {{#each layoutVM.client_infos}}
@@ -156,7 +163,7 @@
             <div class="navbar-buttons">
 
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 sản phẩm</span></a>
+                    <a href="#" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Giỏ hàng <span class="cart-count">0</span></span></a>
                 </div>
                 <!--/.nav-collapse -->
 
@@ -218,7 +225,7 @@
                         <ul>
                             <li><a href="#" data-toggle="modal" data-target="#login-modal">Đăng nhập</a>
                             </li>
-                            <li><a href="#">Tạo tài khoản</a>
+                            <li><a href="#">Đăng kí</a>
                             </li>
                         </ul>
 
@@ -264,7 +271,7 @@
 
                     <div class="col-md-3 col-sm-6">
 
-                        <h4>Hãy đến với chung tôi</h4>
+                        <h4>Kết nối với chúng tôi</h4>
 
                         <p><strong>SSG Company</strong>
                             <br>69/227

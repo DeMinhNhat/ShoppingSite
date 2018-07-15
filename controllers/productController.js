@@ -38,8 +38,31 @@ router.get('/', (req, res) => {
 	});
 });
 
-router.get('/detail', (req, res) => {
-	res.render('product/detail');
+router.get('/detail/:proId', (req, res) => {
+	var proId = req.params.proId;
+	if (proId < 1) {
+		res.render('error/index');
+		return;
+	}
+
+	productRepo.loadSingle(proId).then(rows => {
+		if (rows.length > 0) {
+			var p1 = productRepo.loadSameCat(rows[0].CatID);
+			var p2 = productRepo.loadSameBra(rows[0].BraID);
+
+			Promise.all([p1, p2]).then(([same_cats, same_bras]) => {
+				vm = {
+					same_cats: same_cats,
+					same_bras: same_bras,
+					product: rows[0]
+				};
+				res.render('product/detail', vm);
+			});
+
+		} else {
+			res.render('error/index');
+		}
+	});
 });
 
 module.exports = router;
