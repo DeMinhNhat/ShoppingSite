@@ -28,9 +28,12 @@
 
     <script src="/assets/js/respond.min.js"></script>
 
-    <link rel="shortcut icon" href="">
+    <link rel="shortcut icon" href="#">
 
     <title>{{{_sections.title}}}</title>
+
+    <form action="/user/logout" type="hidden" method="post" id="logout">
+    </form>
 
 </head>
 
@@ -44,9 +47,9 @@
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
                     {{#if layoutVM.isLogged}}
-                    <li><a href="#">{{layoutVM.curUser.f_Username}}</a>
+                    <li><a href="/user">{{layoutVM.curUser.f_Username}}</a>
                     </li>
-                    <li><a href="#">Đăng xuất</a>
+                    <li><a href="javascript:;" class="logout_btn">Đăng xuất</a>
                     </li>
                     {{else}}
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">Đăng nhập</a>
@@ -68,16 +71,16 @@
                         <h4 class="modal-title" id="Login">Đăng nhập</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="/user/" method="post">
+                        <form action="/user/login" method="post">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="email-modal" placeholder="email">
+                                <input type="text" class="form-control" id="email-modal" placeholder="email" name="email">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password-modal" placeholder="password">
+                                <input type="password" class="form-control" id="password-modal" placeholder="mật khẩu" name="password">
                             </div>
 
                             <p class="text-center">
-                                <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Đăng nhập</button>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Đăng nhập</button>
                             </p>
 
                         </form>
@@ -111,7 +114,7 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                    <a class="btn btn-default navbar-toggle" href="#">
+                    <a class="btn btn-default navbar-toggle" href="/cart">
                         <i class="fa fa-shopping-cart"></i><span class="hidden-xs">Giỏ hàng <span class="cart-count">0</span></span>
                     </a>
                 </div>
@@ -135,7 +138,7 @@
                                             <ul>
                                                 {{#each cates}}
                                                 <li>
-                                                    <a href="#">{{CatName}}</a>
+                                                    <a href="/product/byCat/{{CatID}}">{{CatName}}</a>
                                                 </li>
                                                 {{/each}}
                                             </ul>
@@ -163,7 +166,7 @@
             <div class="navbar-buttons">
 
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="#" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Giỏ hàng <span class="cart-count">0</span></span></a>
+                    <a href="/cart" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Giỏ hàng <span class="cart-count">0</span></span></a>
                 </div>
                 <!--/.nav-collapse -->
 
@@ -178,9 +181,9 @@
 
             <div class="collapse clearfix" id="search">
 
-                <form class="navbar-form" role="search">
+                <form class="navbar-form" method="get" action="/product" role="search">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" placeholder="Tìm kiếm" name="search">
                         <span class="input-group-btn">
 
                             <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
@@ -225,7 +228,7 @@
                         <ul>
                             <li><a href="#" data-toggle="modal" data-target="#login-modal">Đăng nhập</a>
                             </li>
-                            <li><a href="#">Đăng kí</a>
+                            <li><a href="/user/register">Đăng kí</a>
                             </li>
                         </ul>
 
@@ -243,7 +246,7 @@
 
                         <ul>
                             {{#each cates}}
-                            <li><a href="#">{{CatName}}</a>
+                            <li><a href="/product/byCat/{{CatID}}">{{CatName}}</a>
                             </li>
                             {{/each}}
                         </ul>
@@ -260,7 +263,7 @@
 
                         <ul>
                             {{#each layoutVM.brands}}
-                            <li><a href="#">{{BraName}}</a>
+                            <li><a href="/product/byBra/{{BraID}}">{{BraName}}</a>
                             </li>
                             {{/each}}
                         </ul>
@@ -319,6 +322,12 @@
     <script src="/assets/js/bootstrap-hover-dropdown.js"></script>
     <script src="/assets/js/owl.carousel.min.js"></script>
     <script src="/assets/js/front.js"></script>
+
+    <script type="text/javascript">
+    $('.logout_btn').on('click', function() {
+        $('#logout').submit();
+    });
+    </script>
 
 </body>
 
