@@ -45,10 +45,10 @@ router.get('/detail/:proId', (req, res) => {
 		return;
 	}
 
-	productRepo.loadSingle(proId).then(rows => {
+	productRepo.single(proId).then(rows => {
 		if (rows.length > 0) {
-			var p1 = productRepo.loadSameCat(rows[0].CatID);
-			var p2 = productRepo.loadSameBra(rows[0].BraID);
+			var p1 = productRepo.loadSameCat(config.PRODUCTS_TO_EXPOSE, 1, rows[0].CatID);
+			var p2 = productRepo.loadSameBra(config.PRODUCTS_TO_EXPOSE, 1, rows[0].BraID);
 
 			Promise.all([p1, p2]).then(([same_cats, same_bras]) => {
 				vm = {

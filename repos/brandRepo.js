@@ -16,6 +16,6 @@ exports.delete = id => {
 }
 
 exports.count = () => {
-	var sql = `select count(*) as total from brands`;
+	var sql = `select count(BraID) as total from brands`;
 	return db.load(sql);
 }

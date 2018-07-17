@@ -16,6 +16,6 @@ exports.delete = id => {
 }
 
 exports.count = () => {
-	var sql = `select count(*) as total from categories`;
+	var sql = `select count(CatID) as total from categories`;
 	return db.load(sql);
 }

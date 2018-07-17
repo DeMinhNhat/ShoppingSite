@@ -16,7 +16,6 @@ CREATE TABLE `clienteles` (
 CREATE TABLE `brands` (
 	`BraID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 	`BraName` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-	`Origin` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
 	PRIMARY KEY (`BraID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
