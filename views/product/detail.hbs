@@ -1,3 +1,9 @@
+{{#section 'title'}}SSG 
+{{#with product}}
+{{ProName}}
+{{/with}}
+{{/section}}
+
 <div id="content">
     <div class="container">
 
@@ -42,10 +48,16 @@
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ :)</button> 
                             </p>
                         </form>
+                        <form method="post" action="/product/wishlist/add">
+                            <input type="hidden" value="{{ProID}}" name="proId">
+                            <p class="text-center buttons">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ :)</button> 
+                            </p>
+                        </form>
                         {{else}}
                         <p class="text-center buttons">
                             <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ :)</a> 
-                            <a href="#" class="btn btn-default"><i class="fa fa-heart"></i> Thêm vào wishlist</a>
+                            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-default"><i class="fa fa-heart"></i> Thêm vào wishlist</a>
                         </p>
                         {{/if}}
                     </div>
@@ -107,81 +119,138 @@
                     </div>
                 </div>
 
-                <div class="row same-height-row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="box same-height">
-                            <h3>You may also like these products</h3>
-                        </div>
+                <!-- *** SAME CAT PRODUCT SLIDESHOW *** -->
+                <div class="product-show">
+
+                    <div class="box">
+                        <h2>Bạn sẽ thích</h2>
                     </div>
 
-                    <div class="col-md-3 col-sm-6">
-                        <div class="product same-height">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front">
-                                        <a href="detail.html">
-                                            <img src="img/product3.jpg" alt="" class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="back">
-                                        <a href="detail.html">
-                                            <img src="img/product3_2.jpg" alt="" class="img-responsive">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="detail.html" class="invisible">
-                                <img src="img/product3.jpg" alt="" class="img-responsive">
-                            </a>
-                            <div class="text">
-                                <h3>Fur coat</h3>
-                                <p class="price">$143</p>
+                    <div class="product-slider">
 
-                            </div>
-                        </div>
-                        <!-- /.product -->
-                    </div>
-
-                </div>
-
-                <div class="row same-height-row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="box same-height">
-                            <h3>Products viewed recently</h3>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="product same-height">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front">
-                                        <a href="#">
-                                            <img src="#" alt="" class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="back">
-                                        <a href="#">
-                                            <img src="#" alt="" class="img-responsive">
-                                        </a>
+                        {{#each same_cats}}
+                        <div class="item">
+                            <div class="product">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+                                            <a href="/product/detail/{{ProID}}">
+                                                <img src="/imgs/products/{{ProID}}/1.jpg" alt="" class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <div class="back">
+                                            <a href="/product/detail/{{ProID}}">
+                                                <img src="/imgs/products/{{ProID}}/2.jpg" alt="" class="img-responsive">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
+                                <a href="/product/detail/{{ProID}}" class="invisible">
+                                    <img src="/imgs/products/{{ProID}}/2.jpg" alt="" class="img-responsive">
+                                </a>
+                                <div class="text">
+                                    <h3><a href="/product/detail/{{ProID}}">{{ProName}}</a></h3>
+                                    {{#if SaleOff}}
+                                    <p class="price"><del>{{number_format Price}}</del> {{number_format Price}}</p>
+                                    {{else}}
+                                    <p class="price">{{number_format Price}}</p>
+                                    {{/if}}
+
+                                    {{#if ../layoutVM.isLogged}}
+                                    <form method="post" action="/cart/add">
+                                        <input type="hidden" value="{{ProID}}" name="proId">
+                                        <input type="hidden" value="1" name="quantity">
+                                        <p class="text-center buttons">
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ :)</button> 
+                                        </p>
+                                    </form>
+                                    {{else}}
+                                    <p class="text-center buttons">
+                                        <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ :)</a> 
+                                    </p>
+                                    {{/if}}
+
+                                </div>
+                                <!-- /.text -->
+
                             </div>
-                            <a href="detail.html" class="invisible">
-                                <img src="img/product2.jpg" alt="" class="img-responsive">
-                            </a>
-                            <div class="text">
-                                <h3>Fur coat</h3>
-                                <p class="price">$143</p>
-                            </div>
+                            <!-- /.product -->
                         </div>
-                        <!-- /.product -->
+                        {{/each}}
+
+                    </div>
+                    <!-- /.product-slider -->
+                </div>
+
+                <!-- *** SAME CAT END *** -->
+
+                <!-- *** SAME BRA PRODUCT SLIDESHOW *** -->
+                <div class="product-show">
+
+                    <div class="box">
+                        <h2>Cùng phong cách</h2>
                     </div>
 
+                    <div class="product-slider">
+
+                        {{#each same_bras}}
+                        <div class="item">
+                            <div class="product">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+                                            <a href="/product/detail/{{ProID}}">
+                                                <img src="/imgs/products/{{ProID}}/1.jpg" alt="" class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <div class="back">
+                                            <a href="/product/detail/{{ProID}}">
+                                                <img src="/imgs/products/{{ProID}}/2.jpg" alt="" class="img-responsive">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/product/detail/{{ProID}}" class="invisible">
+                                    <img src="/imgs/products/{{ProID}}/2.jpg" alt="" class="img-responsive">
+                                </a>
+                                <div class="text">
+                                    <h3><a href="/product/detail/{{ProID}}">{{ProName}}</a></h3>
+                                    {{#if SaleOff}}
+                                    <p class="price"><del>{{number_format Price}}</del> {{number_format Price}}</p>
+                                    {{else}}
+                                    <p class="price">{{number_format Price}}</p>
+                                    {{/if}}
+
+                                    {{#if ../layoutVM.isLogged}}
+                                    <form method="post" action="/cart/add">
+                                        <input type="hidden" value="{{ProID}}" name="proId">
+                                        <input type="hidden" value="1" name="quantity">
+                                        <p class="text-center buttons">
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ :)</button> 
+                                        </p>
+                                    </form>
+                                    {{else}}
+                                    <p class="text-center buttons">
+                                        <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ :)</a> 
+                                    </p>
+                                    {{/if}}
+
+                                </div>
+                                <!-- /.text -->
+
+                            </div>
+                            <!-- /.product -->
+                        </div>
+                        {{/each}}
+
+                    </div>
+                    <!-- /.product-slider -->
                 </div>
+
+                <!-- *** SAME BRA END *** -->
 
             </div>
-            <!-- /.col-md-9 -->
+            <!-- /.col-md-12 -->
         </div>
         <!-- /.container -->
     </div>

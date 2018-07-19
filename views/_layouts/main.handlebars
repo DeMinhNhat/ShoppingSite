@@ -114,9 +114,17 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
+
+                    {{#if layoutVM.isLogged}}
                     <a class="btn btn-default navbar-toggle" href="/cart">
                         <i class="fa fa-shopping-cart"></i><span class="hidden-xs">Giỏ hàng <span class="cart-count">0</span></span>
                     </a>
+                    {{else}}
+                    <a class="btn btn-default navbar-toggle" data-toggle="modal" data-target="#login-modal" href="#">
+                        <i class="fa fa-shopping-cart"></i><span class="hidden-xs">Giỏ hàng <span class="cart-count">0</span></span>
+                    </a>
+                    {{/if}}
+
                 </div>
             </div>
             <!--/.navbar-header -->
@@ -165,9 +173,15 @@
 
             <div class="navbar-buttons">
 
+                {{#if layoutVM.isLogged}}
                 <div class="navbar-collapse collapse right" id="basket-overview">
                     <a href="/cart" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Giỏ hàng <span class="cart-count">0</span></span></a>
                 </div>
+                {{else}}
+                <div class="navbar-collapse collapse right" id="basket-overview">
+                    <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Giỏ hàng <span class="cart-count">0</span></span></a>
+                </div>
+                {{/if}}
                 <!--/.nav-collapse -->
 
                 <div class="navbar-collapse collapse right" id="search-not-mobile">
@@ -181,7 +195,7 @@
 
             <div class="collapse clearfix" id="search">
 
-                <form class="navbar-form" method="get" action="/product" role="search">
+                <form class="navbar-form" method="post" action="/product" role="">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Tìm kiếm" name="search">
                         <span class="input-group-btn">
@@ -226,10 +240,17 @@
                         <h4>Người dùng</h4>
 
                         <ul>
+                            {{#if layoutVM.isLogged}}
+                            <li><a href="/user">{{layoutVM.curUser.f_Username}}</a>
+                            </li>
+                            <li><a href="javascript:;" class="logout_btn">Đăng xuất</a>
+                            </li>
+                            {{else}}
                             <li><a href="#" data-toggle="modal" data-target="#login-modal">Đăng nhập</a>
                             </li>
                             <li><a href="/user/register">Đăng kí</a>
                             </li>
+                            {{/if}}
                         </ul>
 
                         <hr class="hidden-md hidden-lg hidden-sm">
@@ -242,7 +263,9 @@
                         <h4>Danh mục</h4>
 
                         {{#each layoutVM.client_infos}}
-                        <h5>{{client.CliName}}</h5>
+                        <h5>
+                            <a href="/product/byCli/{{client.CliID}}">{{client.CliName}}</a>
+                        </h5>
 
                         <ul>
                             {{#each cates}}
@@ -276,7 +299,8 @@
 
                         <h4>Kết nối với chúng tôi</h4>
 
-                        <p><strong>SSG Company</strong>
+                        <p>
+                            <strong><a href="/us/contact">SSG Company</a></strong>
                             <br>69/227
                             <br>Gia Kiệm
                             <br>Đồng Nai
@@ -284,8 +308,6 @@
                             <br>
                             <strong>Being Great</strong>
                         </p>
-
-                        <a href="/us/contact">Địa chỉ liên hệ</a>
 
                         <hr>
 

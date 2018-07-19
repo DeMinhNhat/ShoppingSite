@@ -69,7 +69,7 @@ exports.loadPageByWords = (amount, offset, words) => {
 		var word = `%` + words[i] + `%`;
 		sql = sql + `ProName like '${word}' or `;
 	}
-	sql += `1!=1  limit ${config.PRODUCTS_PER_PAGE} offset ${offset}`;
+	sql += `1!=1  limit ${amount} offset ${offset}`;
 
 	return db.load(sql);
 }
