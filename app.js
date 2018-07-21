@@ -15,6 +15,7 @@ var Local_strategy = require('passport-local').Strategy;
 
 var handleLayoutMDW = require('./middle-wares/handleLayout');
 var handle404MDW = require('./middle-wares/handle404');
+var restrict = require('./middle-wares/restrict');
 
 var homeController = require('./controllers/homeController');
 var cartController = require('./controllers/cartController');

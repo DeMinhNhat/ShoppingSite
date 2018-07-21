@@ -117,11 +117,11 @@
 
                     {{#if layoutVM.isLogged}}
                     <a class="btn btn-default navbar-toggle" href="/cart">
-                        <i class="fa fa-shopping-cart"></i><span class="hidden-xs">Giỏ hàng <span class="cart-count">0</span></span>
+                        <i class="fa fa-shopping-cart"></i><span class="hidden-xs">Giỏ hàng (<span class="cart-count">0</span>)</span>
                     </a>
                     {{else}}
                     <a class="btn btn-default navbar-toggle" data-toggle="modal" data-target="#login-modal" href="#">
-                        <i class="fa fa-shopping-cart"></i><span class="hidden-xs">Giỏ hàng <span class="cart-count">0</span></span>
+                        <i class="fa fa-shopping-cart"></i><span class="hidden-xs">Giỏ hàng (<span class="cart-count">0</span>)</span>
                     </a>
                     {{/if}}
 
@@ -175,11 +175,11 @@
 
                 {{#if layoutVM.isLogged}}
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="/cart" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Giỏ hàng <span class="cart-count">0</span></span></a>
+                    <a href="/cart" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Giỏ hàng (<span class="cart-count">0</span>)</span></a>
                 </div>
                 {{else}}
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Giỏ hàng <span class="cart-count">0</span></span></a>
+                    <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Giỏ hàng (<span class="cart-count">0</span>)</span></a>
                 </div>
                 {{/if}}
                 <!--/.nav-collapse -->
@@ -195,7 +195,7 @@
 
             <div class="collapse clearfix" id="search">
 
-                <form class="navbar-form" method="post" action="/product" role="">
+                <form class="navbar-form" method="get" action="/product" role="">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Tìm kiếm" name="search">
                         <span class="input-group-btn">

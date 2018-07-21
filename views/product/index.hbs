@@ -5,7 +5,8 @@
             <ul class="breadcrumb">
                 <li><a href="/">Home</a>
                 </li>
-                <li>Ladies</li>
+                <li>Tìm kiếm</li>
+                <li>{{query}}</li>
             </ul>
         </div>
 
@@ -20,9 +21,9 @@
                                     <div class="products-sort-by">
                                         <strong>Sort by</strong>
                                         <select name="sort-by" class="form-control">
-                                            <option>Price</option>
-                                            <option>Name</option>
-                                            <option>Sales first</option>
+                                            <option>Được xem nhiều</option>
+                                            <option>Giá từ thấp đến cao</option>
+                                            <option>Giá từ cao đến thấp</option>
                                         </select>
                                     </div>
                                 </div>
@@ -79,7 +80,7 @@
             <div class="pages">
 
                 <ul class="pagination">
-                    <li><a href="javascript:;">&laquo;</a>
+                    <li><a class="page-link" href="javascript:;">&laquo;</a>
                     </li>
                     {{#each page_numbers}}
                     {{#if isCurrentPage}}
@@ -87,122 +88,72 @@
                         <a class="page-link" href="javascript:;">{{value}}</a>
                     </li>
                     {{else}}
-                    <form class="navbar-form" method="post" action="/product?page={{value}}" role="">
-                        <div class="input-group">
-                            <input type="text" value="{{sstring}}" class="form-control" name="search">
-                            <li class="page-item">
-                               <a class="page-link" type="submit" href="javascript:;">{{value}}</a>
-                           </li>
-                       </div>
-                   </form>
-                   {{/if}}
-                   {{/each}}
-                   <li><a href="javascript:;">&raquo;</a>
-                   </li>
-               </ul>
-           </div>
-
-       </div>
-       <!-- /.col-md-9 -->
-
-       <div class="col-md-3">
-        <!-- *** MENUS AND FILTERS *** -->
-        <div class="panel panel-default sidebar-menu">
-
-            <div class="panel-heading">
-                <h3 class="panel-title">Categories</h3>
-            </div>
-
-            <div class="panel-body">
-                <ul class="nav nav-pills nav-stacked category-menu">
-                    <li>
-                        <a href="category.html">Men <span class="badge pull-right">42</span></a>
-                        <ul>
-                            <li><a href="category.html">T-shirts</a>
-                            </li>
-                            <li><a href="category.html">Shirts</a>
-                            </li>
-                            <li><a href="category.html">Pants</a>
-                            </li>
-                            <li><a href="category.html">Accessories</a>
-                            </li>
-                        </ul>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{value}}&search={{query}}">{{value}}</a>
                     </li>
-                    <li class="active">
-                        <a href="category.html">Ladies  <span class="badge pull-right">123</span></a>
-                        <ul>
-                            <li><a href="category.html">T-shirts</a>
-                            </li>
-                            <li><a href="category.html">Skirts</a>
-                            </li>
-                            <li><a href="category.html">Pants</a>
-                            </li>
-                            <li><a href="category.html">Accessories</a>
-                            </li>
-                        </ul>
+                    {{/if}}
+                    {{/each}}
+                    <li><a href="javascript:;">&raquo;</a>
                     </li>
-                    <li>
-                        <a href="category.html">Kids  <span class="badge pull-right">11</span></a>
-                        <ul>
-                            <li><a href="category.html">T-shirts</a>
-                            </li>
-                            <li><a href="category.html">Skirts</a>
-                            </li>
-                            <li><a href="category.html">Pants</a>
-                            </li>
-                            <li><a href="category.html">Accessories</a>
-                            </li>
-                        </ul>
-                    </li>
-
                 </ul>
-
             </div>
+
+        </div>
+        <!-- /.col-md-9 -->
+
+        <div class="col-md-3">
+            <!-- *** MENUS AND FILTERS *** -->
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Thể loại</h3>
+                </div>
+
+                <div class="panel-body">
+                    <ul class="nav nav-pills nav-stacked category-menu">
+                        {{#each layoutVM.client_infos}}
+                        <li>
+                            <a href="/product/byCli/{{client.CliID}}">{{client.CliName}}<span class="badge pull-right">42</span></a>
+                            <ul>
+                                {{#each cates}}
+                                <li>
+                                    <a href="/product/byCat/{{CatID}}">{{CatName}}</a>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Thương hiệu<a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Xóa</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            {{#each layoutVM.brands}}
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">{{BraName}} (14)
+                                </label>
+                            </div>
+                            {{/each}}
+                        </div>
+
+                        <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Xác nhận</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- *** MENUS AND FILTERS END *** -->
         </div>
 
-        <div class="panel panel-default sidebar-menu">
-
-            <div class="panel-heading">
-                <h3 class="panel-title">Brands <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Clear</a></h3>
-            </div>
-
-            <div class="panel-body">
-
-                <form>
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox">Armani (10)
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox">Versace (12)
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox">Carlo Bruni (15)
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox">Jack Honey (14)
-                            </label>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
-
-                </form>
-
-            </div>
-        </div>
-
-        <!-- *** MENUS AND FILTERS END *** -->
     </div>
-
-</div>
-<!-- /.container -->
+    <!-- /.container -->
 </div>
 <!-- /#content -->

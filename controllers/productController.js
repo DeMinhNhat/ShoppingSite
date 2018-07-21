@@ -4,11 +4,11 @@ var productRepo = require('../repos/productRepo');
 
 var router = express.Router();
 
-router.post('/', (req, res) => {
+router.get('/', (req, res) => {
 
 	var page = req.query.page;
-	var s = req.body.search;
-	var words = s.split(`[^\W\d](\w|[-']{1,2}(?=\w))*`);
+	var query = req.query.search;
+	var words = query.split(`[^\W\d](\w|[-']{1,2}(?=\w))*`);
 
 	if (!page) page = 1;
 	if (page < 1) page = 1;
@@ -37,19 +37,18 @@ router.post('/', (req, res) => {
 			numbers.push({
 				value: i,
 				isCurrentPage: i === +page,
-				sstring: s
+				query: query
 			});
 		}
 
 		var vm = {
 			products: rows,
 			noProducts: rows.length === 0,
-			page_numbers: numbers
+			page_numbers: numbers,
+			query: query
 		};
 		res.render('product/index', vm);
 	});
-
-	// if words len > 0, do the add words to database :)
 });
 
 router.get('/detail/:proId', (req, res) => {
