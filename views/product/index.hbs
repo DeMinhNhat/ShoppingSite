@@ -1,3 +1,14 @@
+{{#section 'js'}}
+<script>
+$("#sort #sort-type").val($("#sort-by").val());
+
+</script>
+{{/section}}
+
+<form type="hidden" method="get" id="sort">
+    <input type="text" name="sortType" id="sort-type">
+</form>
+
 <div id="content">
     <div class="container">
 
@@ -20,10 +31,10 @@
                                 <div class="col-md-6 col-sm-6">
                                     <div class="products-sort-by">
                                         <strong>Sort by</strong>
-                                        <select name="sort-by" class="form-control">
-                                            <option>Được xem nhiều</option>
-                                            <option>Giá từ thấp đến cao</option>
-                                            <option>Giá từ cao đến thấp</option>
+                                        <select name="sort-by" id="sort-by" class="form-control">
+                                            <option value="viewed">Được xem nhiều</option>
+                                            <option value="price-desc">Giá từ thấp đến cao</option>
+                                            <option value="price-asc">Giá từ cao đến thấp</option>
                                         </select>
                                     </div>
                                 </div>
@@ -113,7 +124,7 @@
                     <ul class="nav nav-pills nav-stacked category-menu">
                         {{#each layoutVM.client_infos}}
                         <li>
-                            <a href="/product/byCli/{{client.CliID}}">{{client.CliName}}<span class="badge pull-right">42</span></a>
+                            <a href="/product/byCli/{{client.CliID}}">{{client.CliName}}<span class="badge pull-right">00</span></a>
                             <ul>
                                 {{#each cates}}
                                 <li>
@@ -139,7 +150,7 @@
                             {{#each layoutVM.brands}}
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox">{{BraName}} (14)
+                                    <input type="checkbox">{{BraName}} (00)
                                 </label>
                             </div>
                             {{/each}}
