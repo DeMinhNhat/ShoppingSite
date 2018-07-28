@@ -46,6 +46,14 @@ exports.loadSameBra = (amount, offset, braId) => {
 	return db.load(sql);
 }
 
+exports.loadSameCli = (amount, offset, cliId) => {
+	var sql = `select * from products inner join categories
+				on products.CatID = categories.CatID
+				where categories.CliID = ${cliId} 
+				order by Clicks asc limit ${amount} offset ${offset}`;
+	return db.load(sql);
+}
+
 exports.count = () => {
 	var sql = `select count(ProID) as total from products`;
 	return db.load(sql);
@@ -58,6 +66,13 @@ exports.countByCat = catId => {
 
 exports.countByBra = braId => {
 	var sql = `select count(ProID) as total from products where BraID = ${braId}`;
+	return db.load(sql);
+}
+
+exports.countByCli = cliId => {
+	var sql = `select count(ProID) as total from products inner join categories
+				on products.CatID = categories.CatID
+				where categories.CliID = ${cliId}`;
 	return db.load(sql);
 }
 

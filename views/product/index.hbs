@@ -1,13 +1,6 @@
 {{#section 'js'}}
-<script>
-$("#sort #sort-type").val($("#sort-by").val());
-
-</script>
+<script src="/assets/customs/product.js"></script>
 {{/section}}
-
-<form type="hidden" method="get" id="sort">
-    <input type="text" name="sortType" id="sort-type">
-</form>
 
 <div id="content">
     <div class="container">
@@ -17,7 +10,18 @@ $("#sort #sort-type").val($("#sort-by").val());
                 <li><a href="/">Home</a>
                 </li>
                 <li>Tìm kiếm</li>
+                {{#if query}}
                 <li>{{query}}</li>
+                {{/if}}
+                {{#if CliName}}
+                <li>{{CliName}}</li>
+                {{/if}}
+                {{#if BraName}}
+                <li>{{BraName}}</li>
+                {{/if}}
+                {{#if CatName}}
+                <li>{{CatName}}</li>
+                {{/if}}
             </ul>
         </div>
 
@@ -91,8 +95,14 @@ $("#sort #sort-type").val($("#sort-by").val());
             <div class="pages">
 
                 <ul class="pagination">
-                    <li><a class="page-link" href="javascript:;">&laquo;</a>
+
+                    {{#each page_numbers}}
+                    {{#if isCurrentPage}}
+                    <li class="disabled prev"><a class="page-link" id="prev" data-page="{{value}}" data-total="{{../total}}" data-query="{{../query}}" href="javascript:;">&laquo;</a>
                     </li>
+                    {{/if}}
+                    {{/each}}
+
                     {{#each page_numbers}}
                     {{#if isCurrentPage}}
                     <li class="page-item active">
@@ -100,12 +110,18 @@ $("#sort #sort-type").val($("#sort-by").val());
                     </li>
                     {{else}}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{value}}&search={{query}}">{{value}}</a>
+                        <a class="page-link" href="?page={{value}}&query={{query}}">{{value}}</a>
                     </li>
                     {{/if}}
                     {{/each}}
-                    <li><a href="javascript:;">&raquo;</a>
+
+                    {{#each page_numbers}}
+                    {{#if isCurrentPage}}
+                    <li class="next"><a class="page-link" id="next" data-page="{{value}}" data-total="{{../total}}" data-query="{{../query}}" href="javascript:;">&raquo;</a>
                     </li>
+                    {{/if}}
+                    {{/each}}
+
                 </ul>
             </div>
 
