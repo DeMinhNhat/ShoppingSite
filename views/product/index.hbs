@@ -98,7 +98,7 @@
 
                     {{#each page_numbers}}
                     {{#if isCurrentPage}}
-                    <li class="disabled prev"><a class="page-link" id="prev" data-page="{{value}}" data-total="{{../total}}" data-query="{{../query}}" href="javascript:;">&laquo;</a>
+                    <li><a class="page-link" id="prev" data-page="{{value}}" data-total="{{../total}}" data-query="{{../query}}" href="javascript:;">&laquo;</a>
                     </li>
                     {{/if}}
                     {{/each}}
@@ -117,7 +117,7 @@
 
                     {{#each page_numbers}}
                     {{#if isCurrentPage}}
-                    <li class="next"><a class="page-link" id="next" data-page="{{value}}" data-total="{{../total}}" data-query="{{../query}}" href="javascript:;">&raquo;</a>
+                    <li><a class="page-link" id="next" data-page="{{value}}" data-total="{{../total}}" data-query="{{../query}}" href="javascript:;">&raquo;</a>
                     </li>
                     {{/if}}
                     {{/each}}
@@ -154,14 +154,14 @@
                 </div>
             </div>
 
-            <div class="panel panel-default sidebar-menu">
+            {{!-- <div class="panel panel-default sidebar-menu">
 
                 <div class="panel-heading">
                     <h3 class="panel-title">Thương hiệu<a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Xóa</a></h3>
                 </div>
 
                 <div class="panel-body">
-                    <form>
+                    <form action="" method="get" id="">
                         <div class="form-group">
                             {{#each layoutVM.brands}}
                             <div class="checkbox">
@@ -175,7 +175,7 @@
                         <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Xác nhận</button>
                     </form>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- *** MENUS AND FILTERS END *** -->
         </div>
